@@ -14,10 +14,6 @@ jobs:
       - name: Checkout project
         uses: actions/checkout@v4
 
-      - name: Extract Android project
-        run: |
-          unzip -o AptitudeQuest_Android_Starter.zip -d project
-
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -28,6 +24,11 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
+
+      - name: Extract project
+        run: |
+          mkdir project
+          unzip -o AptitudeQuest_Android_Correct.zip -d project
 
       - name: Build APK
         working-directory: project
